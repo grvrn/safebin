@@ -1,13 +1,16 @@
 import argparse
+import uvicorn
 
 from dotenv import load_dotenv
-from service import encrypt_and_send, decrypt_and_read
+from fastapi import FastAPI
+
+from backend.service import encrypt_and_send, decrypt_and_read
+from backend.api import router
 
 # Load environment variables from .env file
 load_dotenv()
 
 def main():
-
     parser = argparse.ArgumentParser(description="Safebin: Secure Pastebin CLI")
     
     parser.add_argument("-c", "--cli", action="store_true", help="Run in command line mode")
@@ -15,7 +18,7 @@ def main():
     args = parser.parse_args()
 
     if args.cli:
-        print("--- Safebin: Pastebin CLI ---")
+        print("--- Safebin: Secure Pastebin CLI ---")
         print("1. Post a paste")
         print("2. Read a paste")
         
@@ -49,9 +52,14 @@ def main():
         else:
             print("Invalid choice.")
     else:
-        print("[WORK IN PROGRESS] Use -c or --cli to run the CLI")
+        app = FastAPI(title="Safebin API")
+        app.include_router(router)
 
-    
+        @app.get("/")
+        async def root():
+            return {"message": "Welcome to Safebin"}
+
+        uvicorn.run(app, host="127.0.0.1", port=8000)
 
 if __name__ == "__main__":
     main()

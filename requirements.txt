@@ -5,3 +5,6 @@ secrets
 binascii
 dotenv
 argparse
+fastapi
+pydantic
+uvicorn

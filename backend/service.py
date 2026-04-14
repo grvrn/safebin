@@ -3,8 +3,8 @@ import time
 
 from binascii import hexlify, unhexlify
 
-from pastebin_utils import post_to_pastebin, get_from_pastebin
-from crypto_utils import encrypt, decrypt, sign, verify
+from backend.utils.pastebin_utils import post_to_pastebin, get_from_pastebin
+from backend.utils.crypto_utils import encrypt, decrypt, sign, verify
 
 def encrypt_and_send(msg, name=None):
     """
