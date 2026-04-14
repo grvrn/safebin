@@ -4,3 +4,4 @@ pyopenssl
 cryptography
 secrets
 binascii
+dotenv
