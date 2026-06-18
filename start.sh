@@ -12,12 +12,10 @@ trap cleanup SIGINT
 
 echo "Starting backend servers..."
 cd backend
-python3 main.py --server &
+python3 main.py &
 BACKEND_PID=$!
 cd ..
 
 echo "Starting frontend servers..."
 cd frontend
-npm run dev
-
-cleanup
+npm run build

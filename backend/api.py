@@ -1,7 +1,7 @@
 from fastapi import APIRouter
 
-from backend.objects.requests import PasteRequest
-from backend.service import encrypt_and_send, decrypt_and_read
+from objects.requests import PasteRequest
+from service import encrypt_and_send, decrypt_and_read
 
 router = APIRouter()
 

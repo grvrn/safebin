@@ -4,8 +4,8 @@ import uvicorn
 from dotenv import load_dotenv
 from fastapi import FastAPI
 
-from backend.service import encrypt_and_send, decrypt_and_read
-from backend.api import router
+from service import encrypt_and_send, decrypt_and_read
+from api import router
 
 # Load environment variables from .env file
 load_dotenv()
